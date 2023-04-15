@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BornomalaStore.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BornomalaStore.Data
 {
@@ -8,5 +9,7 @@ namespace BornomalaStore.Data
         {
 
         }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Author> Author { get; set; }
     }
 }
