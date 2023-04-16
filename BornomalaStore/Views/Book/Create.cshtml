@@ -3,7 +3,7 @@
     ViewData["Title"] = "Create";
 }
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary"> Add Book</h2>
@@ -22,12 +22,17 @@
             <input asp-for="Language" class="form-control" />
             <span asp-validation-for="Language" class="text-danger"></span>
         </div>
-        <div class="mb-3">
-
-            <label asp-for="Path"></label>
-            <input asp-for="Path" class="form-control" />
-            <span asp-validation-for="Path" class="text-danger"></span>
+        <div class="mb-3 row">
+            <div class="col-8">
+                <label asp-for="ImagePath"></label>
+                <input asp-for="ImagePath" class="form-control" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <img src="https://placehold.jp/150*150.png" style="width:100px;height:100px;border:1px solid red;border-radius:10px; padding:10px;" alt="Book Image" />
+            </div>
         </div>
+        
         <div class="mb-3">
             
             <label asp-for="AuthorName"></label>
@@ -40,11 +45,15 @@
             <input asp-for="AuthorAddress" class="form-control" />
             <span asp-validation-for="AuthorAddress" class="text-danger"></span>
         </div>
-        <div class="mb-3">
-
-            <label asp-for="AuthorPath"></label>
-            <input asp-for="AuthorPath" class="form-control" />
-            <span asp-validation-for="AuthorPath" class="text-danger"></span>
+        <div class="mb-3 row">
+            <div class="col-8">
+                <label asp-for="AuthorImage"></label>
+                <input asp-for="AuthorImage" class="form-control" />
+                <span asp-validation-for="AuthorImage" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <img src="https://placehold.jp/150*150.png" style="width:100px;height:100px;border:1px solid red;border-radius:10px; padding:10px;" alt="Author Image" />
+            </div>
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px">ADD</button>
         <a asp-controller="Book" asp-action="Index" class="btn btn-secondary" style="width:150px">

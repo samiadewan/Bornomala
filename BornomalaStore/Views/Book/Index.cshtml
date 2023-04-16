@@ -26,6 +26,9 @@
                 <th>
                     Author Name
                 </th>
+                <th>
+                    Image
+                </th>
                 
             </tr>
 
@@ -33,6 +36,7 @@
         <tbody>
             @foreach (var obj in Model)
             {
+                var imagePath = "Image/" + obj.Path;
                 <tr>
                     <td width="50%">
                         <a asp-controller="Book" asp-action="BookDetail" asp-route-id="@obj.Id" class="btn btn-primary">
@@ -45,6 +49,9 @@
                             @obj.AuthorName
                         </a>
                         
+                    </td>
+                    <td width="30%">
+                        <img src="@imagePath" height="100px" width="100px"/>
                     </td>
                     <td>
                         <div class="w-75 btn-group" role="group">

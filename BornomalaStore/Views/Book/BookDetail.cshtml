@@ -1,7 +1,9 @@
 ﻿@model Book
 @{
     ViewData["Title"] = "BookDetail";
+    //var imagePath = "Image/" + @Model.Path;
 }
+
 
 <div class="container p-3">
     
@@ -24,7 +26,15 @@
 
         </thead>
         <tbody>
-           
+                <tr>
+                    
+                    <td width="80%">
+
+                    <img src="@Url.Content("~/Image/"+Model.Path)" height="100px;" width="100px;" />
+
+                     </td>
+
+                </tr>
                 <tr>
                     <td width="80%">
                     <label asp-for="BookTitle  ">BookTitle:  </label>
