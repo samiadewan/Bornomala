@@ -1,0 +1,61 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary"> Add Book</h2>
+            <hr />
+        </div>
+       
+        <div class="mb-3">
+           
+            <label asp-for="BookTitle"></label>
+            <input asp-for="BookTitle" class="form-control" />
+            <span asp-validation-for="BookTitle" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+
+            <label asp-for="Language"></label>
+            <input asp-for="Language" class="form-control" />
+            <span asp-validation-for="Language" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+
+            <label asp-for="Path"></label>
+            <input asp-for="Path" class="form-control" />
+            <span asp-validation-for="Path" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            
+            <label asp-for="AuthorName"></label>
+            <input asp-for="AuthorName" class="form-control" />
+            <span asp-validation-for="AuthorName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+
+            <label asp-for="AuthorAddress"></label>
+            <input asp-for="AuthorAddress" class="form-control" />
+            <span asp-validation-for="AuthorAddress" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+
+            <label asp-for="AuthorPath"></label>
+            <input asp-for="AuthorPath" class="form-control" />
+            <span asp-validation-for="AuthorPath" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">ADD</button>
+        <a asp-controller="Book" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+
+    }
+}
+
