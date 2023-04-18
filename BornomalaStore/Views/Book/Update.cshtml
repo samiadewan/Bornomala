@@ -1,9 +1,9 @@
 ﻿@model Book
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Update";
 }
 
-<form method="post" enctype="multipart/form-data">
+<form method="post" asp-action="Update" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary"> Add Book</h2>
@@ -11,7 +11,7 @@
         </div>
        
         <div class="mb-3">
-           
+            <input asp-for="Id" hidden/>
             <label asp-for="BookTitle"></label>
             <input asp-for="BookTitle" class="form-control" />
             <span asp-validation-for="BookTitle" class="text-danger"></span>
@@ -26,10 +26,10 @@
             <div class="col-8">
                 <label asp-for="ImagePath"></label>
                 <input type="file" asp-for="ImagePath" class="form-control" id="ChooseImg" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
+               @* <span asp-validation-for="ImagePath" class="text-danger"></span>*@
             </div>
             <div class="col-4">
-                <img src="https://placehold.jp/150*150.png" style="width:100px;height:100px;border:1px solid red;border-radius:10px; padding:10px;" alt="Book Image" id="PrevImg"/>
+                <img src="~/Image/@Model.Path" style="width:100px;height:100px;border:1px solid red;border-radius:10px; padding:10px;" alt="Book Image" id="PrevImg"/>
             </div>
         </div>
         
@@ -49,13 +49,13 @@
             <div class="col-8">
                 <label asp-for="AuthorImage"></label>
                 <input type="file" asp-for="AuthorImage" class="form-control" id="chooseImg" />
-                <span asp-validation-for="AuthorImage" class="text-danger"></span>
+                @*<span asp-validation-for="AuthorImage" class="text-danger"></span>*@
             </div>
             <div class="col-4">
-                <img src="https://placehold.jp/150*150.png" style="width:100px;height:100px;border:1px solid red;border-radius:10px; padding:10px;" alt="Author Image" id="prevImg" />
+                <img src="~/Image/@Model.AuthorPath" style="width:100px;height:100px;border:1px solid red;border-radius:10px; padding:10px;" alt="Author Image" id="prevImg" />
             </div>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">ADD</button>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
         <a asp-controller="Book" asp-action="Index" class="btn btn-secondary" style="width:150px">
             Back to List
         </a>
@@ -70,4 +70,6 @@
     <script src="~/js/image.js"></script>
 
 }
+
+
 

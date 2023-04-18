@@ -22,7 +22,7 @@ namespace BornomalaStore.Models
         [Required]
         public string AuthorAddress { get; set; }
         public string AuthorPath { get; set; }
-        [Display(Name = "Choose Image")]
+        [Display(Name = "Choose AuthorImage")]
         [NotMapped]
         public IFormFile AuthorImage { get; set; }
     }
