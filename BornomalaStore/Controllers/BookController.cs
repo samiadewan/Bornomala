@@ -123,6 +123,7 @@ namespace BornomalaStore.Controllers
 
             var bookFromDb = _db.Books.SingleOrDefault(e => e.Id == obj.Id);
             string uniqueFileName = string.Empty;
+            string uniqueAuthFileName = string.Empty;
             if(obj.ImagePath != null)
             {
                 if(bookFromDb.Path!=null)
@@ -136,6 +137,19 @@ namespace BornomalaStore.Controllers
                 uniqueFileName = UploadImage(obj.ImagePath);
 
             }
+            if (obj.AuthorImage!=null)
+            {
+                if (bookFromDb.AuthorPath!= null)
+                {
+                    string filepath = Path.Combine(environment.WebRootPath, "Image/", bookFromDb.AuthorPath);
+                    if (System.IO.File.Exists(filepath))
+                    {
+                        System.IO.File.Delete(filepath);
+                    }
+                }
+                uniqueAuthFileName = UploadImage(obj.AuthorImage);
+
+            }
             bookFromDb.BookTitle = obj.BookTitle;
             bookFromDb.Language = obj.Language;
             bookFromDb.AuthorName = obj.AuthorName;
@@ -143,6 +157,10 @@ namespace BornomalaStore.Controllers
             if(obj.ImagePath!=null)
             {
                 bookFromDb.Path = uniqueFileName;
+            }
+            if (obj.AuthorImage != null)
+            {
+                bookFromDb.AuthorPath = uniqueAuthFileName;
             }
             _db.Books.Update(bookFromDb);
             _db.SaveChanges();//pushto databse
@@ -163,14 +181,12 @@ namespace BornomalaStore.Controllers
             else
             {
                 var bookFromDb = _db.Books.SingleOrDefault(e => e.Id == id);
+                
                 if (bookFromDb != null)
                 {
                     string currentImage = Path.Combine(environment.WebRootPath, "Image/",bookFromDb.Path);
                     string currentAuthorImage = Path.Combine(environment.WebRootPath, "Image/",bookFromDb.AuthorPath);
-                   /*string currentImage = Path.Combine(Directory.GetCurrentDirectory(), deleteFromFolder, bookFromDb.Path);*/
-                    
-
-                    
+                   
                     
                         if (System.IO.File.Exists(currentImage))
                         {
@@ -189,7 +205,7 @@ namespace BornomalaStore.Controllers
                     TempData["success"] = "Category deleted successfully";
                 }
             }
-            
+
             return RedirectToAction("Index");
         }
 
