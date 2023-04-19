@@ -7,3 +7,12 @@ This is a Book Store Project. Here users can view a list of books and their deta
 3.Author Details - View Author Information (Author Image, Address, book published by the author)
 4.Update Book and Author Information
 5.Delete Book and Author Information with a confirmation popup
+
+#Technologies Used
+C#
+ASP.NET Core MVC
+Entity Framework Core
+HTML
+CSS
+JavaScript
+Bootstrap
