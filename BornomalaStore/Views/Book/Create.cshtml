@@ -1,0 +1,73 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary"> Add Book</h2>
+            <hr />
+        </div>
+       
+        <div class="mb-3">
+           
+            <label asp-for="BookTitle"></label>
+            <input asp-for="BookTitle" class="form-control" />
+            <span asp-validation-for="BookTitle" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+
+            <label asp-for="Language"></label>
+            <input asp-for="Language" class="form-control" />
+            <span asp-validation-for="Language" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-8">
+                <label asp-for="ImagePath"></label>
+                <input type="file" asp-for="ImagePath" class="form-control" id="ChooseImg" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <img src="https://placehold.jp/150*150.png" style="width:100px;height:100px;border:1px solid red;border-radius:10px; padding:10px;" alt="Book Image" id="PrevImg"/>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            
+            <label asp-for="AuthorName"></label>
+            <input asp-for="AuthorName" class="form-control" />
+            <span asp-validation-for="AuthorName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+
+            <label asp-for="AuthorAddress"></label>
+            <input asp-for="AuthorAddress" class="form-control" />
+            <span asp-validation-for="AuthorAddress" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-8">
+                <label asp-for="AuthorImage"></label>
+                <input type="file" asp-for="AuthorImage" class="form-control" id="chooseImg" />
+                <span asp-validation-for="AuthorImage" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <img src="https://placehold.jp/150*150.png" style="width:100px;height:100px;border:1px solid red;border-radius:10px; padding:10px;" alt="Author Image" id="prevImg" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">ADD</button>
+        <a asp-controller="Book" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+
+    }
+    <script src="~/js/preview.js"></script>
+    <script src="~/js/image.js"></script>
+
+}
+
